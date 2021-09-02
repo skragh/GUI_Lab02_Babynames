@@ -1,0 +1,75 @@
+﻿<Window x:Class="BabynamesUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BabynamesUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" MinHeight="100"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="MenuTop" Grid.Row="0" Grid.ColumnSpan="2" >
+            <MenuItem Header="File">
+                <MenuItem x:Name="MenuExit" Header="Exit" Click="MenuExit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Font">
+                <MenuItem x:Name="MenuFontSmall" Header="Small" Click="MenuItem_Click"/>
+                <MenuItem x:Name="MenuFontNormal" Header="Normal" Click="MenuFontNormal_Click" />
+                <MenuItem x:Name="MenuFontLarge" Header="Large" Click="MenuFontLarge_Click" />
+                <MenuItem x:Name="MenuFontHuge" Header="Huge" Click="MenuFontHuge_Click" />
+            </MenuItem>
+        </Menu>
+
+        <ListBox Name="lstDecadeTopNames" Loaded="lstDecadeTopNames_Loaded" Grid.Row="2" Grid.Column="2" BorderBrush="{x:Null}" Height="auto"/>
+        <ComboBox Name="comboDecadeYears" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"
+                  Loaded="ComboBox_Loaded" SelectionChanged="comboDecadeYears_SelectionChanged" BorderBrush="{x:Null}" Margin="0" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+        <TextBlock HorizontalAlignment="Left" Text="Decade" Grid.Column="1" Grid.Row="1" Width="120"></TextBlock>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Text="Top 10 baby name in selected decade" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="1"  />
+
+        <GroupBox Header="Search" Margin="10" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBox  x:Name="tbxName" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1"/>
+                <Label x:Name="lblName" Target="{Binding ElementName=tbxName}" Content="_Name:" HorizontalAlignment="Left" Grid.Column="0" VerticalAlignment="Center"/>
+                <Button x:Name="btnSearch" Content="Search" Grid.Column="1" Margin="5,5,5,5" Grid.Row="1" Click="Button_Click" FontWeight="Bold" BorderBrush="#FFFF1C1C" />
+                <Label x:Name="lblAvgRank"  Content="Average ranking:" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center"/>
+                <Label x:Name="lblTrend" Content="Trend" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Center"/>
+                <TextBlock x:Name="tblAvgRank"  Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="2" Text="empty" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <TextBlock x:Name="tblTrend"  Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="3" Text="empty" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <Label Name="lblYear" Content="Year" Grid.Column="3" HorizontalAlignment="Center"  VerticalAlignment="Top"/>
+                <Label Name="lblRank" Content="Rank" Grid.Column="4" HorizontalAlignment="Center"  VerticalAlignment="Top"/>
+                <ListBox x:Name="listboxSrchRes" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
+
+
+            </Grid>
+        </GroupBox>
+
+
+    </Grid>
+</Window>
